@@ -1,4 +1,4 @@
-import {Category} from '../model/Category'
+import { Category } from '../model/Category'
 
 
 interface ICreateCategoryDTO {
@@ -9,23 +9,34 @@ interface ICreateCategoryDTO {
 class CategoriesRepository {
     private categories: Category[] = [];
 
-    constructor(){
+    constructor() {
         this.categories = []
     };
 
-    Create({name, description} : ICreateCategoryDTO): void {
-    const category = new Category();
+    Create({ name, description }: ICreateCategoryDTO): void {
+        const category = new Category();
 
         Object.assign(category, {
             name,
             description,
             created_at: new Date()
         });
-    
+
         this.categories.push(category);
+    };
+
+    List(): Category[] {
+        return this.categories;
+    };
+
+    findByName(name: string): any {
+
+        const category = this.categories.find((categories) => categories.name === name);
+
+        return category;
     }
 
 }
 
 
-export {CategoriesRepository} 
+export { CategoriesRepository } 
