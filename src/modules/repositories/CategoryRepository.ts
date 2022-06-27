@@ -4,7 +4,7 @@ import {ICategoryRepository, ICreateCategoryDTO} from './ICategoryRepository'
 
 
 class CategoriesRepository implements ICategoryRepository {
-    private categories: Category[] = [];
+    private categories: Category[];
 
     constructor() {
         this.categories = []
